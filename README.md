@@ -1,16 +1,4 @@
 # fetch_data_network
 
+<img align="right" width="300" src="https://github.com/PhongHuynh93/fetch_data_network/blob/master/preview/device-2020-08-26-223321.png">
 A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
