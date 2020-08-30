@@ -9,6 +9,7 @@ import 'package:fetch_data_network/domain/Result.dart';
 import 'package:flutter/material.dart';
 
 import '../data/Repository.dart';
+import '../domain/GetAlbumUseCase.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _album = GetAlbumUseCase(Repository()).fetchAlbum();
+    _album = GetAlbumUseCase(Repository()).invoke(GetAlbumParam());
   }
 
   @override

@@ -1,20 +1,19 @@
 import 'package:fetch_data_network/data/Repository.dart';
 import 'package:fetch_data_network/data/model/Album.dart';
+import 'package:fetch_data_network/domain/UseCase.dart';
 import 'dart:async';
 
 import '../data/Repository.dart';
 import 'Result.dart';
 
-class GetAlbumUseCase {
+class GetAlbumParam {}
+class GetAlbumUseCase extends UseCase<GetAlbumParam, Album> {
   final Repository _repository;
 
   GetAlbumUseCase(this._repository);
 
-  Future<Result<Album>> fetchAlbum() async {
-    try {
-      return Success(await _repository.fetchAlbum());
-    } catch (ex) {
-      return Future.error(Error(ex));
-    }
+  @override
+  Future<Album> execute(GetAlbumParam param) {
+    return _repository.fetchAlbum();
   }
 }
