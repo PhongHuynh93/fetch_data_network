@@ -10,5 +10,4 @@ class Album {
   Album({this.userId, this.id, this.title});
 
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
-  Map<String, dynamic> toJson() => _$AlbumToJson(this);
 }

@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'model/Album.dart';
 import 'dart:convert';
 
+import 'model/Photo.dart';
+
 class RestApi {
-//  todo use one client here
-  Future<Album> fetchAlbum() async {
-    final response = await http.get(
+  Future<Album> fetchAlbum(http.Client client) async {
+    final response = await client.get(
       'https://jsonplaceholder.typicode.com/albums/1',
       headers: {HttpHeaders.authorizationHeader: "Basic your_api_token_here"},
     );
@@ -23,8 +24,8 @@ class RestApi {
     }
   }
 
-  Future<Album> deleteAlbum(String id) async {
-    final http.Response response = await http.delete(
+  Future<Album> deleteAlbum(http.Client client, String id) async {
+    final http.Response response = await client.delete(
       'https://jsonplaceholder.typicode.com/albums/$id',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -42,5 +43,11 @@ class RestApi {
     } else {
       throw Exception('Failed to delete album.');
     }
+  }
+
+  Future<List<Photo>> fetchPhotos(http.Client client) async {
+    final response = await client.get('https://jsonplaceholder.typicode.com/photos');
+    return json.decode(response.body).cast<Map<String, dynamic>>()
+    .map<Photo>((json) => Photo.fromJson(json)).toList();
   }
 }

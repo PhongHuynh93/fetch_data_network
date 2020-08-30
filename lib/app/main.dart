@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   Future<Result<Album>> _album;
   void callback(String id) {
     setState(() {
-      _album = DeleteAlbumUseCase(Repository()).invoke(DeleteAlbumParam(id));
+      _album = DeleteAlbumUseCase().invoke(DeleteAlbumParam(id));
     });
   }
 
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _album = GetAlbumUseCase(Repository()).invoke(GetAlbumParam());
+    _album = GetAlbumUseCase().invoke(GetAlbumParam());
   }
 
   @override

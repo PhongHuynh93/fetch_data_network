@@ -3,7 +3,6 @@ import 'package:fetch_data_network/data/model/Album.dart';
 import 'dart:async';
 
 import '../data/Repository.dart';
-import 'Result.dart';
 import 'UseCase.dart';
 
 class DeleteAlbumParam {
@@ -12,9 +11,9 @@ class DeleteAlbumParam {
   DeleteAlbumParam(this.id);
 }
 class DeleteAlbumUseCase extends UseCase<DeleteAlbumParam, Album> {
-  final Repository _repository;
+  final Repository _repository = Repository();
 
-  DeleteAlbumUseCase(this._repository);
+  DeleteAlbumUseCase();
 
   @override
   Future<Album> execute(DeleteAlbumParam param) {

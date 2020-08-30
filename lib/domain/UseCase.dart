@@ -1,4 +1,5 @@
-import 'Result.dart';
+import 'package:flutter/foundation.dart';
+
 import 'Result.dart';
 
 abstract class UseCase<Param, T> {

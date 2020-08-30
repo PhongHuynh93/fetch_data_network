@@ -8,9 +8,9 @@ import 'Result.dart';
 
 class GetAlbumParam {}
 class GetAlbumUseCase extends UseCase<GetAlbumParam, Album> {
-  final Repository _repository;
+  final Repository _repository = Repository();
 
-  GetAlbumUseCase(this._repository);
+  GetAlbumUseCase();
 
   @override
   Future<Album> execute(GetAlbumParam param) {
