@@ -4,17 +4,20 @@ import 'dart:async';
 
 import '../data/Repository.dart';
 import 'Result.dart';
+import 'UseCase.dart';
 
-class DeleteAlbumUseCase extends UseCase<> {
+class DeleteAlbumParam {
+  final String id;
+
+  DeleteAlbumParam(this.id);
+}
+class DeleteAlbumUseCase extends UseCase<DeleteAlbumParam, Album> {
   final Repository _repository;
 
   DeleteAlbumUseCase(this._repository);
 
-  Future<Result<Album>> deleteAlbum(String id) async {
-    try {
-      return Success(await _repository.deleteAlbum(id));
-    } catch (ex) {
-      return Future.error(Error(ex));
-    }
+  @override
+  Future<Album> execute(DeleteAlbumParam param) {
+    throw _repository.deleteAlbum(param.id);
   }
 }

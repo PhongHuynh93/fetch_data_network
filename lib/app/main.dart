@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   Future<Result<Album>> _album;
   void callback(String id) {
     setState(() {
-      _album = DeleteAlbumUseCase(Repository()).();
+      _album = DeleteAlbumUseCase(Repository()).invoke(DeleteAlbumParam(id));
     });
   }
 
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Column(children: <Widget>[
 //            FetchDataWidget(_album),
-            DeleteDataWidget(_album, )
+            DeleteDataWidget(_album, callback)
           ])),
     );
   }

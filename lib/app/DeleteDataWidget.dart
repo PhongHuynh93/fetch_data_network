@@ -4,19 +4,20 @@ import '../domain/Result.dart';
 
 class DeleteDataWidget extends StatefulWidget {
   final _album;
-
-  DeleteDataWidget(this._album);
+  final void Function(String id) callback;
+  DeleteDataWidget(this._album, this.callback);
 
   @override
   State<StatefulWidget> createState() {
-    return _FetchDataState(_album);
+    return _FetchDataState(_album, callback);
   }
 }
 
 class _FetchDataState extends State<DeleteDataWidget> {
-  var _album;
+  final _album;
+  final void Function(String id) callback;
 
-  _FetchDataState(this._album);
+  _FetchDataState(this._album, this.callback);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,7 @@ class _FetchDataState extends State<DeleteDataWidget> {
                     RaisedButton(
                       child: Text('Delete Data'),
                       onPressed: () {
-                        setState(() {
-                          _album =
-                              deleteAlbum(data.data.id.toString());
-                        });
+                          callback(data.data.id.toString());
                       },
                     ),
                   ],
