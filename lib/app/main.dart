@@ -32,10 +32,22 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // The initState() method is called exactly once and then never again. If you
+  // want to have the option of reloading the API in response to an InheritedWidget changing, put the call into the didChangeDependencies() method.
   @override
   void initState() {
     super.initState();
     _album = GetAlbumUseCase(Repository()).invoke(GetAlbumParam());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(MyApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -54,6 +66,16 @@ class _MyAppState extends State<MyApp> {
             DeleteDataWidget(_album, callback)
           ])),
     );
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
 
