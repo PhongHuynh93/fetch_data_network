@@ -5,6 +5,8 @@ import 'package:fetch_data_network/domain/GetAlbumUseCase.dart';
 import 'package:fetch_data_network/domain/Result.dart';
 import 'package:flutter/material.dart';
 
+import '../data/RepositoryImpl.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -14,23 +16,17 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    var restApi = RestApi();
-    var repository = RepositoryImpl(restApi);
-
-    return _MyAppState(repository);
+    return _MyAppState();
   }
 }
 
 class _MyAppState extends State<MyApp> {
   Future<Result<Album>> _album;
-  Repository _repository;
-
-  _MyAppState(this._repository);
 
   @override
   void initState() {
     super.initState();
-    _album = GetAlbumUseCase(_repository).fetchAlbum();
+    _album = GetAlbumUseCase(Repository()).fetchAlbum();
   }
 
   @override

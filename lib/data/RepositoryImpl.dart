@@ -3,10 +3,11 @@ import 'package:http/http.dart' as http;
 import 'RestApi.dart';
 import 'model/Album.dart';
 
-class RepositoryImpl implements Repository {
-  final RestApi _restApi;
+// singleton
+class _RepositoryImpl implements Repository {
+  final RestApi _restApi = RestApi();
 
-  RepositoryImpl(this._restApi);
+  _RepositoryImpl();
 
   @override
   Future<Album> fetchAlbum() {
@@ -14,6 +15,11 @@ class RepositoryImpl implements Repository {
   }
 }
 
+// singleton
 class Repository {
+
+  static final repository = _RepositoryImpl();
+  factory Repository() => repository;
+
   Future<Album> fetchAlbum() {}
 }

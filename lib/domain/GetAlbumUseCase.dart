@@ -2,6 +2,7 @@ import 'package:fetch_data_network/data/RepositoryImpl.dart';
 import 'package:fetch_data_network/data/model/Album.dart';
 import 'dart:async';
 
+import '../data/RepositoryImpl.dart';
 import 'Result.dart';
 
 class GetAlbumUseCase {

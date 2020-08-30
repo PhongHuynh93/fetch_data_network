@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'Album.g.dart';
+
+@JsonSerializable(nullable: true)
 class Album {
   final int userId;
   final int id;
@@ -5,11 +9,6 @@ class Album {
 
   Album({this.userId, this.id, this.title});
 
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json["userId"],
-      id: json["id"],
-      title: json["title"],
-    );
-  }
+  factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
+  Map<String, dynamic> toJson() => _$AlbumToJson(this);
 }
