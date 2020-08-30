@@ -5,14 +5,14 @@ import 'dart:async';
 import '../data/Repository.dart';
 import 'Result.dart';
 
-class GetAlbumUseCase {
+class DeleteAlbumUseCase extends UseCase<> {
   final Repository _repository;
 
-  GetAlbumUseCase(this._repository);
+  DeleteAlbumUseCase(this._repository);
 
-  Future<Result<Album>> fetchAlbum() async {
+  Future<Result<Album>> deleteAlbum(String id) async {
     try {
-      return Success(await _repository.fetchAlbum());
+      return Success(await _repository.deleteAlbum(id));
     } catch (ex) {
       return Future.error(Error(ex));
     }

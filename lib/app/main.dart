@@ -1,11 +1,14 @@
-import 'package:fetch_data_network/data/RepositoryImpl.dart';
+import 'package:fetch_data_network/app/DeleteDataWidget.dart';
+import 'package:fetch_data_network/app/FetchDataWidget.dart';
+import 'package:fetch_data_network/data/Repository.dart';
 import 'package:fetch_data_network/data/RestApi.dart';
 import 'package:fetch_data_network/data/model/Album.dart';
+import 'package:fetch_data_network/domain/DeleteAlbumUseCase.dart';
 import 'package:fetch_data_network/domain/GetAlbumUseCase.dart';
 import 'package:fetch_data_network/domain/Result.dart';
 import 'package:flutter/material.dart';
 
-import '../data/RepositoryImpl.dart';
+import '../data/Repository.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +25,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Future<Result<Album>> _album;
+  void callback(String id) {
+    setState(() {
+      _album = DeleteAlbumUseCase(Repository()).();
+    });
+  }
 
   @override
   void initState() {
@@ -37,29 +45,13 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fetch Data Example'),
-        ),
-        body: Center(
-          child: FutureBuilder<Result<Object>>(
-            future: _album,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                var data = snapshot.data;
-                if (data is Success<Album>) {
-                  return Text(data.data.title);
-                } else
-                  if (data is Error) {
-                  return Text("${data.exception}");
-                }
-              }
-
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-            },
+          appBar: AppBar(
+            title: Text('Fetch Data Example'),
           ),
-        ),
-      ),
+          body: Column(children: <Widget>[
+//            FetchDataWidget(_album),
+            DeleteDataWidget(_album, )
+          ])),
     );
   }
 }

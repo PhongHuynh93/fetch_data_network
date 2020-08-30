@@ -13,6 +13,11 @@ class _RepositoryImpl implements Repository {
   Future<Album> fetchAlbum() {
     return _restApi.fetchAlbum();
   }
+
+  @override
+  Future<Album> deleteAlbum(String id) {
+    return _restApi.deleteAlbum(id);
+  }
 }
 
 // singleton
@@ -22,4 +27,5 @@ class Repository {
   factory Repository() => repository;
 
   Future<Album> fetchAlbum() {}
+  Future<Album> deleteAlbum(String id) {}
 }
