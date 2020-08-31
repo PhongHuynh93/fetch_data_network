@@ -25,6 +25,11 @@ class _RepositoryImpl implements Repository {
   Future<List<Photo>> fetchPhotos() {
     return _restApi.fetchPhotos(client);
   }
+
+  @override
+  Future<Album> createAlbum(String title) {
+    return _restApi.createAlbum(client, title);
+  }
 }
 
 // singleton
@@ -38,4 +43,6 @@ class Repository {
   Future<Album> deleteAlbum(String id) {}
 
   Future<List<Photo>> fetchPhotos() {}
+
+  Future<Album> createAlbum(String title) {}
 }

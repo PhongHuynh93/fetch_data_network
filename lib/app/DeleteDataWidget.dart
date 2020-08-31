@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../data/model/Album.dart';
 import '../domain/Result.dart';
 
-class DeleteDataWidget extends StatefulWidget {
+class DeleteAlbumWidget extends StatefulWidget {
   final _album;
   final void Function(String id) callback;
-  DeleteDataWidget(this._album, this.callback);
+  DeleteAlbumWidget(this._album, this.callback);
 
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +13,7 @@ class DeleteDataWidget extends StatefulWidget {
   }
 }
 
-class _FetchDataState extends State<DeleteDataWidget> {
+class _FetchDataState extends State<DeleteAlbumWidget> {
   final _album;
   final void Function(String id) callback;
 

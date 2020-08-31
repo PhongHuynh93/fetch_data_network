@@ -46,8 +46,33 @@ class RestApi {
   }
 
   Future<List<Photo>> fetchPhotos(http.Client client) async {
-    final response = await client.get('https://jsonplaceholder.typicode.com/photos');
-    return json.decode(response.body).cast<Map<String, dynamic>>()
-    .map<Photo>((json) => Photo.fromJson(json)).toList();
+    final response =
+        await client.get('https://jsonplaceholder.typicode.com/photos');
+    return json
+        .decode(response.body)
+        .cast<Map<String, dynamic>>()
+        .map<Photo>((json) => Photo.fromJson(json))
+        .toList();
+  }
+
+  Future<Album> createAlbum(http.Client client, String title) async {
+    final response = await client.post(
+      'https://jsonplaceholder.typicode.com/albums',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'title': title,
+      }),
+    );
+    if (response.statusCode == 201) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      return Album.fromJson(json.decode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
   }
 }

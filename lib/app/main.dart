@@ -1,15 +1,10 @@
+import 'package:fetch_data_network/app/CreateAlbumWidget.dart';
 import 'package:fetch_data_network/app/DeleteDataWidget.dart';
-import 'package:fetch_data_network/app/FetchDataWidget.dart';
-import 'package:fetch_data_network/data/Repository.dart';
-import 'package:fetch_data_network/data/RestApi.dart';
 import 'package:fetch_data_network/data/model/Album.dart';
-import 'package:fetch_data_network/domain/DeleteAlbumUseCase.dart';
-import 'package:fetch_data_network/domain/GetAlbumUseCase.dart';
 import 'package:fetch_data_network/domain/Result.dart';
+import 'package:fetch_data_network/domain/album/DeleteAlbumUseCase.dart';
+import 'package:fetch_data_network/domain/album/GetAlbumUseCase.dart';
 import 'package:flutter/material.dart';
-
-import '../data/Repository.dart';
-import '../domain/GetAlbumUseCase.dart';
 
 void main() {
   runApp(MyApp());
@@ -61,11 +56,8 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Fetch Data Example'),
           ),
-          body: Column(children: <Widget>[
-//            FetchDataWidget(_album),
-            DeleteDataWidget(_album, callback)
-          ])),
-    );
+          body: CreateAlbumWidget(),
+    ));
   }
 
   @override

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../data/model/Album.dart';
 import '../domain/Result.dart';
 
-class FetchDataWidget extends StatefulWidget {
+class FetchAlbumWidget extends StatefulWidget {
   final _album;
 
-  FetchDataWidget(this._album);
+  FetchAlbumWidget(this._album);
 
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +13,7 @@ class FetchDataWidget extends StatefulWidget {
   }
 }
 
-class _FetchDataState extends State<FetchDataWidget> {
+class _FetchDataState extends State<FetchAlbumWidget> {
   final _album;
 
   _FetchDataState(this._album);
