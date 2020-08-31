@@ -75,4 +75,25 @@ class RestApi {
       throw Exception('Failed to load album');
     }
   }
+
+  Future<Album> updateAlbum(http.Client client, String title) async {
+    final response = await client.put(
+      'https://jsonplaceholder.typicode.com/albums/1',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'title': title,
+      }),
+    );
+    if (response.statusCode == 201) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      return Album.fromJson(json.decode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }
 }
