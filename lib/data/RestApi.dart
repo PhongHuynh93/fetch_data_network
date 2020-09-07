@@ -96,4 +96,6 @@ class RestApi {
       throw Exception('Failed to load album');
     }
   }
+
+
 }
