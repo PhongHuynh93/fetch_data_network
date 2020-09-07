@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/model/Album.dart';
-import '../domain/Result.dart';
+import '../../../data/model/Album.dart';
+import '../../../domain/Result.dart';
 
 class DeleteAlbumWidget extends StatefulWidget {
   final _album;

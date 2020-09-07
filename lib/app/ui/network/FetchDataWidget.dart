@@ -1,6 +1,6 @@
+import 'package:fetch_data_network/data/model/Album.dart';
+import 'package:fetch_data_network/domain/Result.dart';
 import 'package:flutter/material.dart';
-import '../data/model/Album.dart';
-import '../domain/Result.dart';
 
 class FetchAlbumWidget extends StatefulWidget {
   final _album;
