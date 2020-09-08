@@ -1,7 +1,9 @@
+import 'package:fetch_data_network/data/model/DeviantArtList.dart';
 import 'package:http/http.dart' as http;
 
 import 'RestApi.dart';
 import 'model/Album.dart';
+import 'model/Art.dart';
 import 'model/Photo.dart';
 
 // singleton
@@ -30,6 +32,11 @@ class _RepositoryImpl implements Repository {
   Future<Album> createAlbum(String title) {
     return _restApi.createAlbum(client, title);
   }
+
+  @override
+  Future<DeviantArtList<Art>> getPopularArt() {
+    return _restApi.getPopularDeviantArt(client);
+  }
 }
 
 // singleton
@@ -45,4 +52,6 @@ class Repository {
   Future<List<Photo>> fetchPhotos() {}
 
   Future<Album> createAlbum(String title) {}
+
+  Future<DeviantArtList<Art>> getPopularArt() {}
 }

@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'model/Album.dart';
 import 'dart:convert';
 
+import 'model/Art.dart';
+import 'model/DeviantArtList.dart';
 import 'model/Photo.dart';
 
 class RestApi {
@@ -14,12 +16,8 @@ class RestApi {
     );
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
       return Album.fromJson(json.decode(response.body));
     } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
       throw Exception('Failed to load album');
     }
   }
@@ -33,12 +31,6 @@ class RestApi {
     );
 
     if (response.statusCode == 200) {
-      // If the server returned a 200 OK response,
-      // then parse the JSON. After deleting,
-      // you'll get an empty JSON `{}` response.
-      // Don't return `null`, otherwise
-      // `snapshot.hasData` will always return false
-      // on `FutureBuilder`.
       return Album.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to delete album.');
@@ -66,12 +58,8 @@ class RestApi {
       }),
     );
     if (response.statusCode == 201) {
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
       return Album.fromJson(json.decode(response.body));
     } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
       throw Exception('Failed to load album');
     }
   }
@@ -87,15 +75,19 @@ class RestApi {
       }),
     );
     if (response.statusCode == 201) {
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
       return Album.fromJson(json.decode(response.body));
     } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
       throw Exception('Failed to load album');
     }
   }
 
-
+  Future<DeviantArtList<Art>> getPopularDeviantArt(http.Client client) async {
+    final response = await client.put("https://www.deviantart"
+        ".com/api/v1/oauth2/browse/popular");
+    if (response.statusCode == 200) {
+      return DeviantArtList<Art>.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
 }
