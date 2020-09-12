@@ -82,8 +82,12 @@ class RestApi {
   }
 
   Future<DeviantArtList<Art>> getPopularDeviantArt(http.Client client) async {
-    final response = await client.put("https://www.deviantart"
-        ".com/api/v1/oauth2/browse/popular");
+    var queryParameters = {
+      'access_token': "1bb1f2ed132dc26235ae9ea27671b0c8f43fcac6c53ae2affc",
+    };
+    var uri = Uri.https('https://www.deviantart.com', '/api/v1/oauth2/browse/popular', queryParameters);
+    final response = await client.get(uri);
+    print('status code ${response.statusCode}');
     if (response.statusCode == 200) {
       return DeviantArtList<Art>.fromJson(json.decode(response.body));
     } else {
