@@ -52,6 +52,17 @@ class _TextFieldState extends State<TextFieldWidget> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Text(myController.text),
+                );
+              });
+        },
+      ),
     );
   }
 
