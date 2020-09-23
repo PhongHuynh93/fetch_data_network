@@ -7,8 +7,8 @@ class PageRouteAnimationWidget extends StatelessWidget {
       home: Page1(),
     );
   }
-
 }
+
 class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
